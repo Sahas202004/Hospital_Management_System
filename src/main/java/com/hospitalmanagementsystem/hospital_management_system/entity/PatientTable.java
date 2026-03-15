@@ -1,11 +1,13 @@
 package com.hospitalmanagementsystem.hospital_management_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hospitalmanagementsystem.hospital_management_system.entity.type.BloodGroup;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -51,4 +53,11 @@ public class PatientTable {
 
     @Column(nullable = false)
     private Long mobileNumber;
+
+    @OneToOne
+    @JoinColumn(name = "patient_insurance_id") // Owning side (It's important to keep the single source of truth)
+    private Insurance insurance;
+
+    @OneToMany(mappedBy = "patientTable") // inverse side
+    private List<Appointment> appointment;
 }

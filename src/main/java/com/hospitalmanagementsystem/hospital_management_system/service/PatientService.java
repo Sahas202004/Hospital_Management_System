@@ -1,22 +1,31 @@
 package com.hospitalmanagementsystem.hospital_management_system.service;
 
+import com.hospitalmanagementsystem.hospital_management_system.dto.BloodGroupCountResponseDTO;
+import com.hospitalmanagementsystem.hospital_management_system.entity.Insurance;
 import com.hospitalmanagementsystem.hospital_management_system.entity.PatientTable;
 import com.hospitalmanagementsystem.hospital_management_system.entity.type.BloodGroup;
+import com.hospitalmanagementsystem.hospital_management_system.repo.InsuranceRepository;
 import com.hospitalmanagementsystem.hospital_management_system.repo.PatientRepository;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PatientService {
 
     @Autowired
     private PatientRepository patientRepository;
+
 
     @Transactional
     public void getPatientByID(Long id){
@@ -62,6 +71,27 @@ public class PatientService {
 
     public PatientTable findByMobileNumber(Long mobileNumber){
         return patientRepository.findByMobileNumber(mobileNumber);
+    }
+
+    public List<Object[]> getCountByBloodGroup(){
+        return patientRepository.findEachBloodGroupType();
+    }
+
+    public List<PatientTable> findAllPatients(){
+        return patientRepository.findAllPatients();
+    }
+
+
+    public int updateName(String name,Long id){
+        return patientRepository.updateName(name,id);
+    }
+
+    public List<BloodGroupCountResponseDTO> countPatientsByBloodGroup(){
+        return patientRepository.countPatientByBloodGroup();
+    }
+
+    public Page<PatientTable> findAllPageable(Pageable pageable){
+        return patientRepository.findAllPageable(pageable);
     }
 
 }
