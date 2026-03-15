@@ -1,97 +1,88 @@
 package com.hospitalmanagementsystem.hospital_management_system.service;
 
-import com.hospitalmanagementsystem.hospital_management_system.dto.BloodGroupCountResponseDTO;
-import com.hospitalmanagementsystem.hospital_management_system.entity.Insurance;
-import com.hospitalmanagementsystem.hospital_management_system.entity.PatientTable;
-import com.hospitalmanagementsystem.hospital_management_system.entity.type.BloodGroup;
 import com.hospitalmanagementsystem.hospital_management_system.repo.InsuranceRepository;
 import com.hospitalmanagementsystem.hospital_management_system.repo.PatientRepository;
 
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
-
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
 
 @Service
 public class PatientService {
 
     @Autowired
     private PatientRepository patientRepository;
+    @Autowired
+    private InsuranceRepository insuranceRepository;
 
-
-    @Transactional
-    public void getPatientByID(Long id){
-        PatientTable p1=patientRepository.findById(id).orElseThrow();
-        PatientTable p2=patientRepository.findById(id).orElseThrow();
-        p1.setName("Hk");
-    }
-
+//
 //    @Transactional
-    public void savePatient(PatientTable p){
-        patientRepository.save(p);
-    }
+//    public void getPatientByID(Long id){
+//        PatientTable p1=patientRepository.findById(id).orElseThrow();
+//        PatientTable p2=patientRepository.findById(id).orElseThrow();
+//        p1.setName("Hk");
+//    }
+//
+////    @Transactional
+//    public void savePatient(PatientTable p){
+//        patientRepository.save(p);
+//    }
+//
+//    @Transactional
+//    public void updateBloodGroup(BloodGroup bloodGroup,  Long id){
+//        PatientTable patient1=patientRepository.findById(id).orElseThrow();
+//        patient1.setBloodGroup(bloodGroup);
+//        patientRepository.save(patient1);
+//        System.out.println(patient1);
+//    }
+//
+//    public List<PatientTable> findByBloodGroup(BloodGroup bloodGroup){
+//        List<PatientTable> p=patientRepository.findByBloodGroup(bloodGroup);
+//        return p;
+//    }
+//
+//    public PatientTable findByEmail(String email){
+//        return patientRepository.findByEmail(email);
+//
+//    }
+//
+//    public List<PatientTable> findByBornAfterBirthDate(LocalDate birthDate){
+//        return patientRepository.findByBornAfterDate(birthDate);
+//    }
+//
+//    @Transactional
+//    public PatientTable updateMobileNumber(Long mobileNumber,Long id){
+//        PatientTable p=patientRepository.findById(id).orElseThrow();
+//        p.setMobileNumber(mobileNumber);
+//        patientRepository.save(p);
+//        return p;
+//    }
+//
+//    public PatientTable findByMobileNumber(Long mobileNumber){
+//        return patientRepository.findByMobileNumber(mobileNumber);
+//    }
+//
+//    public List<Object[]> getCountByBloodGroup(){
+//        return patientRepository.findEachBloodGroupType();
+//    }
+//
+//    public List<PatientTable> findAllPatients(){
+//        return patientRepository.findAllPatients();
+//    }
+//
+//
+//    public int updateName(String name,Long id){
+//        return patientRepository.updateName(name,id);
+//    }
+//
+//    public List<BloodGroupCountResponseDTO> countPatientsByBloodGroup(){
+//        return patientRepository.countPatientByBloodGroup();
+//    }
+//
+//    public Page<PatientTable> findAllPageable(Pageable pageable){
+//        return patientRepository.findAllPageable(pageable);
+//    }
 
-    @Transactional
-    public void updateBloodGroup(BloodGroup bloodGroup,  Long id){
-        PatientTable patient1=patientRepository.findById(id).orElseThrow();
-        patient1.setBloodGroup(bloodGroup);
-        patientRepository.save(patient1);
-        System.out.println(patient1);
-    }
-
-    public List<PatientTable> findByBloodGroup(BloodGroup bloodGroup){
-        List<PatientTable> p=patientRepository.findByBloodGroup(bloodGroup);
-        return p;
-    }
-
-    public PatientTable findByEmail(String email){
-        return patientRepository.findByEmail(email);
-
-    }
-
-    public List<PatientTable> findByBornAfterBirthDate(LocalDate birthDate){
-        return patientRepository.findByBornAfterDate(birthDate);
-    }
-
-    @Transactional
-    public PatientTable updateMobileNumber(Long mobileNumber,Long id){
-        PatientTable p=patientRepository.findById(id).orElseThrow();
-        p.setMobileNumber(mobileNumber);
-        patientRepository.save(p);
-        return p;
-    }
-
-    public PatientTable findByMobileNumber(Long mobileNumber){
-        return patientRepository.findByMobileNumber(mobileNumber);
-    }
-
-    public List<Object[]> getCountByBloodGroup(){
-        return patientRepository.findEachBloodGroupType();
-    }
-
-    public List<PatientTable> findAllPatients(){
-        return patientRepository.findAllPatients();
-    }
 
 
-    public int updateName(String name,Long id){
-        return patientRepository.updateName(name,id);
-    }
-
-    public List<BloodGroupCountResponseDTO> countPatientsByBloodGroup(){
-        return patientRepository.countPatientByBloodGroup();
-    }
-
-    public Page<PatientTable> findAllPageable(Pageable pageable){
-        return patientRepository.findAllPageable(pageable);
-    }
 
 }

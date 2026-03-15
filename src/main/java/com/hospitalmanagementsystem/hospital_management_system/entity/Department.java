@@ -19,9 +19,8 @@ public class Department {
     @JoinColumn(name = "head_doctor_id") // owning side
     private Doctor headDoctor;
 
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
-            name = "my_dpt_doctor",
             joinColumns = @JoinColumn(name="department_id"),
             inverseJoinColumns = @JoinColumn(name = "doctors_id")
     )

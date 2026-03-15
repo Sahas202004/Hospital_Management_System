@@ -3,6 +3,7 @@ package com.hospitalmanagementsystem.hospital_management_system.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,7 +30,7 @@ public class Doctor {
     private String specialization;
 
     @OneToMany(mappedBy = "doctor") // inverse side
-    private List<Appointment> appointments;
+    private List<Appointment> appointments=new ArrayList<>();
 
     @ManyToMany(mappedBy = "doctors")
     private Set<Department> departments=new HashSet<>();

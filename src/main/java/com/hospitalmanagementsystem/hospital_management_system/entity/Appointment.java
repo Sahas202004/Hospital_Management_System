@@ -1,10 +1,22 @@
 package com.hospitalmanagementsystem.hospital_management_system.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = {"patientTable","doctor"})
+@Builder
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(name = "patient_doctor",columnNames ={ "patient_id","doctor_id","time"})
+        }
+)
 public class Appointment {
 
 

@@ -1,10 +1,8 @@
 package com.hospitalmanagementsystem.hospital_management_system.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 
@@ -14,7 +12,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@ToString
+@ToString
 public class Insurance {
 
     @Id
